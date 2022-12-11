@@ -12,6 +12,7 @@ const Colors = {
 };
 
 const Button = ({ title, onPress, buttonStyle, buttonType }) => {
+  console.log("re-rendering");
   return (
     <Pressable
       onPress={onPress}
@@ -19,11 +20,9 @@ const Button = ({ title, onPress, buttonStyle, buttonType }) => {
         styles.button,
         {
           backgroundColor: Colors[buttonType][0],
-          // buttonType === ButtonTypes.NUMBER ? "#71717a" : "#f59e0b",
         },
         pressed && {
           backgroundColor: Colors[buttonType][1],
-          // buttonType === ButtonTypes.NUMBER ? "#3f3f46" : "#b45309",
         },
         buttonStyle,
       ]}
