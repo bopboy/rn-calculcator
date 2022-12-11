@@ -22,7 +22,16 @@ export default function App() {
       </View>
       <View style={styles.buttonContainer}>
         <View style={styles.leftPad}>
-          <View style={styles.number}></View>
+          <View style={styles.number}>
+            {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((num) => (
+              <Button
+                key={num}
+                title={num.toString()}
+                onPress={() => {}}
+                buttonStyle={{ width, height: width, marginTop: 1 }}
+              />
+            ))}
+          </View>
           <View style={styles.bottom}>
             <Button
               title="0"
@@ -78,7 +87,7 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     flexDirection: "row",
-    backgroundColor: "skyblue",
+    backgroundColor: "#000000",
     justifyContent: "space-evenly",
   },
   result: {
@@ -89,7 +98,11 @@ const styles = StyleSheet.create({
     paddingRight: 30,
   },
   leftPad: { width: "75%" },
-  number: {},
+  number: {
+    flexDirection: "row",
+    flexWrap: "wrap-reverse",
+    justifyContent: "space-evenly",
+  },
   bottom: { flexDirection: "row", justifyContent: "space-evenly" },
   operator: {},
 });
