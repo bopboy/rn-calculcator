@@ -17,6 +17,26 @@ export default function App() {
 
   console.log(formula);
 
+  const calculate = () => {
+    let calculateNumber = 0;
+    let operator = "";
+    formula.forEach((value) => {
+      if ([Operators.PLUS, Operators.MINUS].includes(value)) {
+        operator = value;
+      } else {
+        if (operator === Operators.PLUS) {
+          calculateNumber += value;
+        } else if (operator === Operators.MINUS) {
+          calculateNumber -= value;
+        } else {
+          calculateNumber = value;
+        }
+      }
+    });
+    setResult(calculateNumber);
+    setFormula([]);
+  };
+
   const onPressNumber = (num) => {
     const last = formula[formula.length - 1];
     if (isNaN(last)) {
@@ -40,6 +60,7 @@ export default function App() {
         setFormula([]);
         break;
       case Operators.EQUAL:
+        calculate();
         break;
       default: {
         const last = formula[formula.length - 1];
