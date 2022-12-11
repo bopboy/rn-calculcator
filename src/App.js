@@ -3,6 +3,13 @@ import { useState } from "react";
 import { StyleSheet, Text, useWindowDimensions, View } from "react-native";
 import Button, { ButtonTypes } from "./components/Button";
 
+const Operators = {
+  CLEAR: "C",
+  MINUS: "-",
+  PLUS: "+",
+  EQUAL: "=",
+};
+
 export default function App() {
   const [result, setResult] = useState(0);
   const width = (useWindowDimensions().width - 5) / 4;
@@ -15,31 +22,41 @@ export default function App() {
       </View>
       <View style={styles.buttonContainer}>
         <View style={styles.leftPad}>
-          <View style={styles.number}>
+          <View style={styles.number}></View>
+          <View style={styles.bottom}>
             <Button
-              title="1"
+              title="0"
               onPress={() => {}}
-              buttonStyle={{ width, height: width, marginBottom: 1 }}
+              buttonStyle={{ width: width * 2, height: width, marginBottom: 1 }}
             />
             <Button
-              title="2"
+              title={Operators.EQUAL}
               onPress={() => {}}
               buttonStyle={{ width, height: width, marginBottom: 1 }}
-            />
-            <Button
-              title="3"
-              onPress={() => {}}
-              buttonStyle={{ width, height: width, marginBottom: 1 }}
-            />
-            <Button
-              title="4"
-              onPress={() => {}}
-              buttonStyle={{ width, height: width, marginBottom: 1 }}
+              buttonType={ButtonTypes.OPERATOR}
             />
           </View>
-          <View style={styles.bottom}></View>
         </View>
-        <View style={styles.operator}></View>
+        <View style={styles.operator}>
+          <Button
+            title={Operators.CLEAR}
+            onPress={() => {}}
+            buttonStyle={{ width, height: width, marginBottom: 1 }}
+            buttonType={ButtonTypes.OPERATOR}
+          />
+          <Button
+            title={Operators.MINUS}
+            onPress={() => {}}
+            buttonStyle={{ width, height: width, marginBottom: 1 }}
+            buttonType={ButtonTypes.OPERATOR}
+          />
+          <Button
+            title={Operators.PLUS}
+            onPress={() => {}}
+            buttonStyle={{ width, height: width * 2, marginBottom: 1 }}
+            buttonType={ButtonTypes.OPERATOR}
+          />
+        </View>
       </View>
     </View>
   );
@@ -60,9 +77,9 @@ const styles = StyleSheet.create({
     alignItems: "flex-end",
   },
   buttonContainer: {
-    // flex: 1,
     flexDirection: "row",
     backgroundColor: "skyblue",
+    justifyContent: "space-evenly",
   },
   result: {
     color: "#ffffff",
@@ -71,8 +88,8 @@ const styles = StyleSheet.create({
     paddingBottom: 30,
     paddingRight: 30,
   },
-  leftPad: {},
+  leftPad: { width: "75%" },
   number: {},
-  bottom: { flexDirection: "row" },
+  bottom: { flexDirection: "row", justifyContent: "space-evenly" },
   operator: {},
 });
