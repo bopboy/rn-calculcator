@@ -5,34 +5,14 @@ import Button, { ButtonTypes } from "./components/Button";
 
 export default function App() {
   const [result, setResult] = useState(0);
-  console.log("rendering", result);
   return (
     <View style={styles.container}>
-      <Text style={{ fontSize: 60 }}>{result}</Text>
-      <Button
-        title="+"
-        onPress={() => {
-          setResult((prev) => {
-            console.log("1 setResult", result);
-            return prev + 1;
-          });
-          setResult((prev) => {
-            console.log("2 setResult", result);
-            return prev + 1;
-          });
-        }}
-        buttonStyle={{ width: 100, height: 100, marginBottom: 10 }}
-        buttonType={ButtonTypes.OPERATOR}
-      />
-      <Button
-        title="-"
-        onPress={() => {
-          setResult(result - 1);
-          console.log(result);
-        }}
-        buttonStyle={{ width: 100, height: 100 }}
-        buttonType={ButtonTypes.OPERATOR}
-      />
+      <View style={styles.resultContainer}>
+        <Text style={styles.result}>{result}</Text>
+      </View>
+      <View style={styles.buttonContainer}>
+        <Text>button</Text>
+      </View>
       <StatusBar style="auto" />
     </View>
   );
@@ -41,8 +21,26 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
+    flexDirection: "column",
     justifyContent: "center",
+    alignItems: "stretch",
+    backgroundColor: "#fff",
+  },
+  resultContainer: {
+    flex: 1,
+    backgroundColor: "#000000",
+    justifyContent: "flex-end",
+    alignItems: "flex-end",
+  },
+  buttonContainer: {
+    flex: 1,
+    backgroundColor: "skyblue",
+  },
+  result: {
+    color: "#ffffff",
+    fontSize: 60,
+    fontWeight: "700",
+    paddingBottom: 30,
+    paddingRight: 30,
   },
 });
