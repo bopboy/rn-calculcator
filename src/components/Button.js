@@ -1,9 +1,27 @@
-import { Text } from "react-native";
+import { Pressable, Text } from "react-native";
 import PropTypes from "prop-types";
 
 const Button = ({ title }) => {
-  console.log(title);
-  return <Text>{title}</Text>;
+  return (
+    <Pressable
+      onPressIn={() => console.log("in")}
+      onPressOut={() => console.log("out")}
+      onPress={() => console.log("onPress")}
+      onLongPress={() => console.log("long")}
+      delayLongPress={2000}
+      //   style={({ pressed }) => {
+      //     return [
+      //       { backgroundColor: "red" },
+      //       pressed && { backgroundColor: "orange", opacity: 0.3 },
+      //     ];
+      style={({ pressed }) => [
+        { backgroundColor: "red" },
+        pressed && { backgroundColor: "orange", opacity: 0.3 },
+      ]}
+    >
+      <Text>{title}</Text>
+    </Pressable>
+  );
 };
 Button.defaultProps = {
   title: "Default",
