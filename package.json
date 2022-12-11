@@ -9,6 +9,7 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "eslint-plugin-react-hooks": "^4.6.0",
     "expo": "~47.0.8",
     "expo-status-bar": "~1.4.2",
     "prop-types": "^15.8.1",
